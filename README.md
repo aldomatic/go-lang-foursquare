@@ -8,4 +8,4 @@ Third party packages used.
 
 Running example
 
-http://107.170.118.82:3000/venues/[query]
+http://107.170.118.82:3000/venues/restaurants
