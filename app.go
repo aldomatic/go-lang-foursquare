@@ -1,5 +1,5 @@
 package main
- 
+
 import (
     "fmt"
     "github.com/codegangsta/negroni"
@@ -8,7 +8,7 @@ import (
     "net/http"
     "github.com/elbuo8/4square-venues"
 )
- 
+
 func main() {
     mux := mux.NewRouter()
     mux.HandleFunc("/", IndexHandler).Methods("GET")
@@ -17,23 +17,23 @@ func main() {
     n.UseHandler(mux)
     n.Run(":3000")
 }
- 
- 
+
+
 func IndexHandler(w http.ResponseWriter, r *http.Request){
 	p := "Page"
 	fmt.Fprintf(w, "Home %s\n", p)
 }
- 
- 
+
+
 func FoursquareHandler(w http.ResponseWriter, r *http.Request){
     vars := mux.Vars(r)
     category := vars["query"]
-    fs := fsvenues.NewFSVenuesClient("FOURSQUARE_ID", "FOURSQUARE_SECRET")
+    fs := fsvenues.NewFSVenuesClient("HCTQ22DNCZSOYJ1RQYVBQA2WGWWH5NLHZ1YUJWBECTSTD5PA", "XVVE5R2WJZY5QKLIFDWPYW33TVONGDXU0KNZ3OH1PY1KKIQK")
     params := make(map[string]string)
     params["ll"] = "32.7,-96.8"
     params["limit"] = "5"
     params["query"] = category
- 
+
     if v, e := fs.GetVenues(params); e == nil {
         data, _ := json.Marshal(v)
         w.Header().Set("Content-Type", "application/json")
