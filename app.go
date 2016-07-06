@@ -28,7 +28,7 @@ func IndexHandler(w http.ResponseWriter, r *http.Request){
 func FoursquareHandler(w http.ResponseWriter, r *http.Request){
     vars := mux.Vars(r)
     category := vars["query"]
-    fs := fsvenues.NewFSVenuesClient("HCTQ22DNCZSOYJ1RQYVBQA2WGWWH5NLHZ1YUJWBECTSTD5PA", "XVVE5R2WJZY5QKLIFDWPYW33TVONGDXU0KNZ3OH1PY1KKIQK")
+    fs := fsvenues.NewFSVenuesClient("", "")
     params := make(map[string]string)
     params["ll"] = "32.7,-96.8"
     params["limit"] = "5"
